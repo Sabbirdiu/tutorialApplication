@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Post
+from django.shortcuts import render, get_object_or_404,redirect
+from .models import Post,BlogComment
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
+
 
 def home(request):
     context = {
@@ -28,15 +30,16 @@ class PostCreateView(LoginRequiredMixin,CreateView):
     fields=['title','content']    
     template_name='blog/new_post.html'
 
-    def form_valid(self,form):
+    def form_valid(self,form):#without a author other user cannot create a post
         form.instance.author = self.request.user
         return super().form_valid(form)
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
     model = Post
     fields=['title','content']    
     template_name='blog/update_post.html'
-
-    def form_valid(self,form):
+   
+   
+    def form_valid(self,form):#without author,other user can not update the post
         form.instance.author = self.request.user
         return super().form_valid(form)        
 
@@ -58,7 +61,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin,DeleteView):
 
 class UserPostListView(ListView):
     model = Post
-    template_name = 'blog/user_posts.html'  # <app>/<model>_<viewtype>.html
+    template_name = 'blog/user_posts.html'  
     context_object_name = 'posts'
     paginate_by = 5
 

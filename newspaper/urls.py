@@ -6,6 +6,12 @@ from django.conf.urls.static import static
 from users import views as user_views #for register
 from django.contrib.auth import views as auth_views #for login/logout
 
+admin.site.site_header = 'tutorialApplication Admin'
+admin.site.site_title = 'tutorialApplication Admin Panel'
+admin.site.index_title = 'Welcome to tutorialApplication Admin Panel'
+
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('blog.urls')),
