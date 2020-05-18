@@ -33,11 +33,6 @@ class Post(models.Model):
 #         return 'Comment by {} on {}'.format(self.name, self.post)   
 
 
-class BlogComment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE,related_name='comments')
-    comment = models.CharField(max_length=250)
-    user = models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
-    def __str__(self):
-        return self.comment
+
     # def get_absolute_url(self):
     #     return reverse('article_list')

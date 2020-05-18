@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404,redirect
-from .models import Post,BlogComment
+from .models import Post
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post,BlogComment
+from .models import Post
 
 # class CommentAdmin(admin.ModelAdmin):
 #     list_display = ('name', 'email', 'post', 'created', 'active')
@@ -7,4 +7,4 @@ from .models import Post,BlogComment
 #     search_fields = ('name', 'email', 'body')
 
 admin.site.register(Post)
-admin.site.register(BlogComment)
+
