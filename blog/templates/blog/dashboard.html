@@ -1,12 +1,10 @@
-{% extends 'base.html' %}
-{% block content  %}
-<h1> Wellcome {{user.username}}</h1>
-<h2>Change your password </h2>
+{% extends 'base.html' %} {% block content %}
+<h1>Wellcome {{user.username}}</h1>
+
 <h1>Edit your profile:</h1>
-<a class="nav-item nav-link" href="{% url 'profile' %}"
->Profile</a
->
+<a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+<h2>Change your password</h2>
 <a class="nav-item nav-link" href="{% url 'password_change' %}"
->change password</a
+  >change password</a
 >
 {% endblock %}
